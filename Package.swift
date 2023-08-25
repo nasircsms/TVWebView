@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "TVWebView",
+    platforms: [
+        .macOS(.v10_14), .iOS(.v14), .tvOS(.v14)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -18,11 +21,15 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        .target(name: "TVWebViewObjc",
+               cSettings: [
+                .headerSearchPath("Private")
+               ]
+               ),
         .target(
             name: "TVWebView",
-            dependencies: []),
-        .testTarget(
-            name: "TVWebViewTests",
-            dependencies: ["TVWebView"]),
+            dependencies: [
+                "TVWebViewObjc"
+            ]),
     ]
 )
