@@ -1,3 +1,3 @@
 # TVWebView
 
-A description of this package.
+A package to integrate WebView in tvOS. Cannot be published on store.
